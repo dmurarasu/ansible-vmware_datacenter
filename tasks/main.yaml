@@ -7,9 +7,9 @@
     password: "{{ vcenter_auth.password | default(omit) }}"
     port: "{{ vcenter_auth.port | default(omit) }}"
     validate_certs: "{{ vcenter_auth.validate_certs | default(omit) }}"
-    datacenter_name: "{{ item.name }}"
-    state: "{{ item.state | default(omit) }}"
-  loop: "{{ vmware_datacenters }}"
+    datacenter_name: "{{ item.value.name | default(item.key) }}"
+    state: "{{ item.value.state | default(omit) }}"
+  loop: "{{ vmware_datacenters | dict2items }}"
   when: >
     vmware_datacenters is defined
   tags:

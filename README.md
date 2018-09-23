@@ -22,9 +22,10 @@ Please report any issues or send PR.
         validate_certs: False
 
       vmware_datacenter:
-        - name: colo1
+        dc1:
+          name: colo1
           state: present
-        - name: colo2
+        dc2:                                    # if name not option not configured uses name of key('dc2' in this example)
           state: present
   roles:
     - ansible-vmware_datacenter  
