@@ -42,7 +42,7 @@ vcenter_auth: { }
 # ---------------------------------------------------------------------------
 # Define the vmware datacenters details to be added/removed
 # ---------------------------------------------------------------------------
-vmware_datacenters { }
+vmware_datacenters: { }
 ```
 
 ## License
