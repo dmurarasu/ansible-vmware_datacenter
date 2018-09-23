@@ -1,0 +1,16 @@
+---
+
+- name: Configure vCenter datacenter
+  vmware_datacenter:
+    hostname: "{{ vcenter_auth.hostname | default(omit) }}"
+    username: "{{ vcenter_auth.username | default(omit) }}"
+    password: "{{ vcenter_auth.password | default(omit) }}"
+    port: "{{ vcenter_auth.port | default(omit) }}"
+    validate_certs: "{{ vcenter_auth.validate_certs | default(omit) }}"
+    datacenter_name: "{{ item.name }}"
+    state: "{{ item.state | default(omit) }}"
+  loop: "{{ vmware_datacenters }}"
+  when: >
+    vmware_datacenters is defined
+  tags:
+    - vmware_datacenters
